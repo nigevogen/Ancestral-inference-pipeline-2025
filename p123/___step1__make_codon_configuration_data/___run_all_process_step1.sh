@@ -1,0 +1,2 @@
+perl make_ancestral_codon_configuration_with_prob_ver221215.pl
+perl make_extant_codon_cofiguration_ver221215.pl

@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+codonpaths/__init__.py
+codonpaths/__version__.py
+codonpaths/constants.py
+codonpaths/path.py
+codonpaths/utils.py
+codonpaths.egg-info/PKG-INFO
+codonpaths.egg-info/SOURCES.txt
+codonpaths.egg-info/dependency_links.txt
+codonpaths.egg-info/top_level.txt

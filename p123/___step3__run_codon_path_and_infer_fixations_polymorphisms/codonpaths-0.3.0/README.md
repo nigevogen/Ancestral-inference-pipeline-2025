@@ -1,0 +1,83 @@
+# codonpaths
+
+![Travis-CI](https://travis-ci.org/kentwait/codonpaths.svg?branch=master)
+
+Generate all possible transition paths between any two codons.
+
+## Installation
+
+### Using a pre-built release (recommended)
+
+1. Download a gzipped release from [https://github.com/kentwait/codonpaths/releases](https://github.com/kentwait/codonpaths/releases)
+2. Install via pip: `pip install codonpaths-0.2.0.tar.gz`
+
+### Building from source
+
+#### Download
+
+First, download the source code using `git clone` or by clicking "Download ZIP" on the codonpaths webpage.
+
+```bash
+git clone git@github.com:kentwait/codonpaths.git
+```
+
+#### Install
+
+Do not use `python setup.py install` because it would be difficult to uninstall later.
+
+Instead, build a distribution first, and install using `pip`.
+
+```bash
+# Change working directory
+$ cd codonpaths
+
+# Removes previous builds (if any)
+$ rm -rf dist
+
+# Creates a build
+$ python setup.py sdist bdist_wheel --universal
+running sdist
+running egg_info
+...
+creating build/bdist.macosx-10.6-x86_64/wheel/codonpaths-0.2.0.dist-info/WHEEL
+
+# Installs the build
+$ pip install dist/codonpaths-0.2.0.tar.gz
+Processing ./dist/codonpaths-0.2.0.tar.gz
+...
+Installing collected packages: codonpaths
+Successfully installed codonpaths-0.2.0
+```
+
+## Usage
+
+```python
+>>> from codonpaths import generate_codon_path_probs
+>>> from codonpaths import CODON_CHANGE_PATHS
+>>> synonymous_rate = 4.0
+>>> nonsynonymous_rate = 1.0
+>>> path_probs = generate_codon_path_probs(
+...    CODON_CHANGE_PATHS,
+...    synonymous_rate, nonsynonymous_rate,
+...    no_stop_codon_path=True)
+
+>>> codon_probs[('AAA', 'AAA')]
+{('AAA', 'AAA'): 1.0}
+
+>>> codon_probs[('AAA', 'ATA')]
+{('AAA', 'ATA'): 1.0}
+
+>>> codon_probs[('AAA', 'TAA')]  # TAA is a stop codon
+{}
+
+>>> path_probs[('AAA', 'ATT')]
+{('AAA', 'AAT', 'ATT'): 0.2857142857142857, ('AAA', 'ATA', 'ATT'): 0.7142857142857143}
+
+>>> path_probs[('AAA', 'TTT')]
+{('AAA', 'AAT', 'ATT', 'TTT'): 0.2, ('AAA', 'AAT', 'TAT', 'TTT'): 0.2, ('AAA', 'ATA', 'TTA', 'TTT'): 0.2, ('AAA', 'ATA', 'ATT', 'TTT'): 0.4}
+
+```
+
+## License
+
+[MIT License](./LICENSE)
