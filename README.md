@@ -4,7 +4,7 @@ A collection of codes used to infer lineage-specific nucleotide/codon changes fo
 
 ## Packages
 
-This repository consists of three packages: `refjoin`, `ppda`, `codonpaths`, and `p123`. 
+This repository consists of one Python package, `refjoin`, and two analysis pipelines, `ppda`, and `p123`. 
 
 ### refjoin
 
@@ -14,9 +14,9 @@ Joins sequence alignments that are generated separately and contain an identical
 
 Infer internal node nucleotide configurations on an assumed species tree for given sequence alignments. BTW is developed by Tomotaka Matsumoto. See Matsumoto and Akashi 2018 (G3). Other Python functions (e.g., for filtering aligned sites) and shell scripts to automate processes are developed by Haruka Yamashita. 
 
-### codonpaths
+### p123
 
-Generate all possible paths to change from one codon to another codon that have different nucleotides at multiple positions (e.g., AAA -> AGG). Each step of a path is a nucleotide change at only one position (e.g., AAA -> AGA). Only paths with minimal numbers of steps are considered (i.e., multiple hits at a position are not considered). This package also calculates weighted probabilities of paths using the number of synonymous and nonsynonymous changes in a path and a given ratio of synonymous-to-nonsynonymous substitution rates. This package is developed by Kent Kawashima. 
+A pipeline to infer lineage-specific codon changes using BTW output. The pipeline is mainly developed by Tomotaka Matsumoto and includes a Python package `codonpath` developed by Kent Kawashima. Haruka Yamashita contributed to debugging. 
 
 ## References
 
