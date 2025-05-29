@@ -16,7 +16,8 @@ bootstrap_num=1000
 
 package_dir=/Users/haruka/Documents/01_myPackages/shell/ppda
 
-# Compute joint probability from ancestor state probability for each position
+# Compute the sum of probabilities across INNCs that show different nucleotide 
+# states at ancestral and derived nodes. 
 python3 $package_dir/sfs/anc_prob_list_to_joint_prob.py \
 -a $anc_prob_file \
 -m $mlf_file \
@@ -33,7 +34,9 @@ python3 $package_dir/sfs/output_AI_result_summary.py \
 -p $poly_info \
 -i $internal_node_num
 
-# Make SFS with bootstrap resampling
+# Perform bootstrap resampling of ancestral reconstructions in units of CDS or introns, 
+# pool nucleotide change counts across all sites and output the counts for each branch 
+# for each replicate.
 python3 $package_dir/sfs/count_mutations_by_AWP_method.py \
 -o $sfs_out_dir \
 -j $joint_prob_file \
