@@ -11,7 +11,7 @@ function abort
 control_file=$1
 
 # Asssign a path to pipeline package
-package_dir=/Users/haruka/Documents/01_myPackages/shell/ppda
+package_dir=/Users/<username>/<thisfolder> # Please change this value to the location of this folder on your computer. 
 
 # Make tempolary control file that can be loaded from shell script.
 python3 $package_dir/utils/make_template_control_file.py $control_file 0.shell_vars.ini
