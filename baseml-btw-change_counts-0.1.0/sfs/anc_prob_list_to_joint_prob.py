@@ -39,7 +39,7 @@ def main(
 def calculate_joint_probability(
         output_file, input_path, mlf_file, internal_node_num, poly_info):
     """ Count the number of mutations in lineage-specific manner. The function
-    reads an ancestor probability file and output tab-separated list of mutation
+    reads an ancestral state probability file and output tab-separated list of mutation
     counts for each site. 
 
     Parameters
@@ -47,12 +47,12 @@ def calculate_joint_probability(
     output_file: str
         A path to output file.
     input_path: str
-        A path to ancestory probability file output from BTW 
+        A path to ancestral state probability file output from BTW 
         ("anc_site_probs_all_node_2nd_BTW_1.txt" usually).
     mlf_file: str
         A path to mlf file. This is to get node identifiers assigned by BASEML.
     internal_node_num: int
-        Number of ancestor nodes.
+        Number of internal nodes.
     poly_info: list
         A list of polymorphism information.
     """
@@ -90,9 +90,9 @@ def read_anc_site_probs(file_path, poly_sp_num, poly_extant_nodes_list, internal
     assert len(d) == pos+1
     return d
 
-# TODO: Make namedtuple object for ancestor state of each pos?
+# TODO: Make namedtuple object for ancestral state of each pos?
 def read_ancestor_state(s, poly_sp_num, poly_extant_nodes_list, internal_node_num):
-    """ Reads a line of ancestor probability. """
+    """ Reads a line for internal node nucleotide configurations and probability."""
     parts = s.split()
     pos = int(parts[0])
 
@@ -134,8 +134,8 @@ def compute_joint_probs_of_all_pos(anc_probs_d, poly_allele_num_d, branches):
     }
 
 def compute_joint_probs(poly_freqs, extant, anc_probs, poly_allele_num_d, branches):
-    """ Compute joint probabilities for each mutation type on every branch on 
-    a given site. """
+    """ Compute the sum of probabilities across internal node nucleotide 
+    configurations for each mutation type on every branch on a given site. """
     scenarios = [
         (extant+anc_prob[0], anc_prob[1])
         for anc_prob in anc_probs
@@ -158,7 +158,7 @@ def compute_joint_probs(poly_freqs, extant, anc_probs, poly_allele_num_d, branch
                 # If current branch is one of polymorphism substitution lineage,
                 if der_node in poly_allele_num_d:
                     # poly_allele_num_d = {9: 14, 10: 21} for mpspye tree.
-                    # Key is ancestor node of polymorphism and value is total 
+                    # Key is ancestral node of polymorphism and value is total 
                     # number of alleles for the population.
                     freq = poly_allele_num_d[der_node]
                 # If current branch is polymorphism lineage,
@@ -193,8 +193,8 @@ def save_as_file(changes_d, out_path):
         
         # Connect allele freq with probability
         # Extract allele frequency for a given population at a position
-        # freq_d[pos][ancestor_node] -> Counter({'T': 4, 'A': 10})
-        # Here, ancestor_node is for a population samples
+        # freq_d[pos][ancestral_node] -> Counter({'T': 4, 'A': 10})
+        # Here, ancestral_node is for a population sample
         mutations = []
         for info, prob in prob_d.items():
             anc_node, der_node, anc_state, der_state, freq = info
@@ -220,7 +220,7 @@ PopulationSampleInfo = namedtuple(
         'sample_prefix', # Prefix in sample seq
         'collapse_prefix', # Prefix in collapse seq
         'extant_nodes', # Order among collapse sequneces
-        'ancestor_node', # Ancestor node id in a tree in mlf file (BASEML output)
+        'ancestor_node', # Ancestral node id in a tree in mlf file (BASEML output)
         'sample_seq_start', # Position of the first allele of the population samples
         'allele_count' # Number of the population samples
     ]

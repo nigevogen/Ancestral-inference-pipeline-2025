@@ -6,7 +6,7 @@ open (IN2,"fltrst_re"); #output of BASEML which shows the estimated ancestral pr
 @str2 = <IN2>;
 open (IN3,"original_aln.txt"); #original_alignment which was the input to make collapse sequences
 @str3 = <IN3>;
-open (IN5,"target_node"); #file showing the position of the target node (ancestor of the two collapse sequences of the focused species (Xth species in the shell script)
+open (IN5,"target_node"); #file showing the position of the target node (ancestral node of the two collapse sequences of the focused species (Xth species in the shell script)
 @str5 = <IN5>;
 
 open (IN4,"estimated_frequency_spectrum.txt"); #estimated SFS of the previous round

@@ -25,7 +25,7 @@ python3 $package_dir/sfs/anc_prob_list_to_joint_prob.py \
 -p $poly_info \
 -i $internal_node_num
 
-# Output ancestor inference summary
+# Output ancestral inference summary
 python3 $package_dir/sfs/output_AI_result_summary.py \
 -o $summary_file \
 -a $anc_prob_file \

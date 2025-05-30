@@ -74,7 +74,7 @@ def poly_info_parser_from_ctl(poly_info_str):
                     parts[0], # Prefix in sample seq
                     parts[1], # Prefix in collapse seq
                     [int(a.strip()) for a in parts[2].split(',')], # Extant node names
-                    int(parts[3]), # Ancestor node name
+                    int(parts[3]), # Ancestral node name
                     int(parts[4]), # Position of the first allele in sample alignment.
                     int(parts[5]) # Number of alleles
                 )

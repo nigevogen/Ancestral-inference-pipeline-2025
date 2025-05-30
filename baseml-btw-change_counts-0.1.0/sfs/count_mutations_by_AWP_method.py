@@ -486,7 +486,7 @@ def bootstrap(data, rep_num, output='matrix'):
 # --------------#
 
 if __name__ == '__main__':
-    desc = 'Output basic statistics for all sites used for ancestor inference.'
+    desc = 'Output basic statistics for all sites used for ancestral inference.'
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument(
         "-o", "--output_dir", 

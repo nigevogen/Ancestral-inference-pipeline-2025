@@ -6,7 +6,7 @@ from collections import namedtuple, defaultdict
 
 def main(output_file, anc_prob_file, mlf_file, joint_prob_file, internal_node_num, 
          poly_info_str, pos_list_file=''):
-    """ Output summary of ancestor states. 
+    """ Output summary of ancestral states. 
 
     Example
     -------
@@ -308,7 +308,7 @@ def read_anc_site_probs(file_path, poly_sp_num, internal_node_num, concat_pos):
         total_site_count, total_var_site_num, config_num, pos_d, prob_d)
 
 def read_ancestor_state(s, poly_sp_num, internal_node_num):
-    """ Reads a line of ancestor probability. """
+    """ Reads a line of ancestral state probability. """
     parts = s.split()
     pos = int(parts[0])
 
@@ -404,7 +404,7 @@ PopulationSampleInfo = namedtuple(
         'sample_prefix', # Prefix in sample seq
         'collapse_prefix', # Prefix in collapse seq
         'extant_nodes', # Order among collapse sequneces
-        'ancestor_node', # Ancestor node id in a tree in mlf file (BASEML output)
+        'ancestor_node', # Ancestral node id in a tree in mlf file (BASEML output)
         'sample_seq_start', # Position of the first allele of the population samples
         'allele_count' # Number of the population samples
     ]
@@ -476,8 +476,8 @@ def myround(a, ndigits=2):
     return (a * n * 2 + 1) // 2 / n
 
 if __name__ == '__main__':
-    desc = 'Output a file of Ancestor Inference (AI) summary. This script reads '\
-        'outputs from BASEML (to read tree config), BTW (to read ancestor '\
+    desc = 'Output a file of Ancestral Inference (AI) summary. This script reads '\
+        'outputs from BASEML (to read tree config), BTW (to read ancestral '\
         'states) and joint probability list (to calculate SFS).'
 
     parser = argparse.ArgumentParser(description=desc)
