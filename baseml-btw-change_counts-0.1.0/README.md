@@ -31,10 +31,10 @@ This pipeline estimates ancestral states and counts of nucleotide changes for mu
 The template file is in this folder. 
 - a folder of alignment FASTA files. 
 The folder path should be specified in the control file as “input_aln_dir” parameter.
-“Marker sequences” can be included to indicate sites to exclude (see [below](#About marker sequence)). 
+“Marker sequences” can be included to indicate sites to exclude (see [below](#marker_seq_bookmark)). 
 - a file for a list of alignment file names from the input alignment folder. 
 The file path should be specified in the control file as “input_aln_list_file” parameter. 
-e.g., “0.ms_auto.ms_short.cutLowrec.itemlist” in intron alignment folder (“m14s21ye_r624_intron_aln_201218HYc”) in zenodo. 
+e.g., “0.ms_auto.ms_short.cutLowrec.itemlist” in intron alignment folder (“m14s21ye_r624_intron_aln_201218HYc”) in [Zenodo][zenodo_link]. 
 - a newick file to indicate an assumed species tree. 
 This file is passed to BASEML and should follow the format required by BASEML (e.g., how to specify branches to share transition parameters). 
 
@@ -107,7 +107,7 @@ run.sh <control file>
     RG18N$, RG2$, RG19$, RG22$, RG24$, RG25$, RG28$, RG32N$, RG34$, RG36$, RG38N$, RG3$, RG5$, RG9$, MD03$, MD06$, MD105$, MD106$, MD146$, MD15$, MD197$, MD199$, MD201$, MD221$, MD224$, MD225$, MD233$, MD235$, MD238$, MD243$, MD251$, MD255$, MD63$, MD72$, MD73$, Dyak_\d+, Dere_\d+
 - `marker_kw` (optional): A suffix string of the names of marker sequences. (default: marker)
 - `markers_to_use` (optional): The names of marker sequences to use for alignment filtering. The names have to separated by “, ”. 
-    - <a id=”About marker sequence”></a>  
+    - <a name="marker_seq_bookmark">About marker sequence</a>  
     A marker sequence can contain “N” and “C” characters. Sites aligned to “N” are excluded whereas sites aligned to “C” are retained in the cleaned alignment files which are input of BASEML. 
 - `genetic_code_type`: a or b. In a-type genetic code, all six fold amino acids are in one class, whereas in b-type Ser codons are separated to four-fold (TCN) and two-fold (AGY) degenerate classes.
 - `only_conserved_aa`: True or False. Whether to retain only “conserved” codon positions in the cleaned alignment files. Here “conserved” is defined as identical amino acids at all terminal nodes. 
@@ -185,6 +185,7 @@ Matsumoto, T., & Akashi, H. (2018). Distinguishing Among Evolutionary Forces Act
 
 <!-- Links below do not appear. -->
 [PAML_github]: https://github.com/abacus-gene/paml 
+[zenodo_link]: https://doi.org/10.5281/zenodo.15274324
 [alignmentrs_github]: https://github.com/kentwait/alignmentrs
 [ZY_github]: https://github.com/ziheng-yang 
 [TM_github]: https://github.com/tomotakamatsumoto 
